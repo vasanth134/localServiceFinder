@@ -1,0 +1,74 @@
+/* HomePage.css */
+
+/* General Page Styling */
+.home-container {
+    width: 100%;
+    height: 100vh;
+    background: url('/path-to-your-background.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* Navbar Styling */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(9, 108, 108, 0.9);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #ADD8E6;
+}
+
+/* Main Content */
+.home-content {
+    max-width: 800px;
+    padding: 20px;
+}
+
+.home-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.home-quote {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+/* Explore Button */
+.explore-button {
+    background-color: #ADD8E6;
+    color: #096C6C;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.explore-button:hover {
+    background-color: #096C6C;
+    color: white;
+}
