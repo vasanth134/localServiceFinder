@@ -1,28 +1,29 @@
 import express from "express";
-import Service from "../models/Service.js";
-
+import Service from "../models/Service.js"; // Mongoose model
 const router = express.Router();
 
-// Add a new service
-router.post("/", async (req, res) => {
+// Get all services
+router.get("/", async (req, res) => {
   try {
-    console.log("Request Body:", req.body); // Debugging log
+    const services = await Service.find();
+    res.json(services);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
 
-    const { name, description, provider, price } = req.body;
-
-    // Check if all required fields are provided
-    if (!name || !description || !provider || !price) {
-      return res.status(400).json({ error: "All fields are required" });
+// Get a single service by ID
+router.get("/:id", async (req, res) => {
+  try {
+    const service = await Service.findById(req.params.id).populate("reviews");
+    console.log("Fetched Service:", service); // Debugging
+    if (!service) {
+      return res.status(404).json({ message: "Service not found" });
     }
-
-    const newService = new Service({ name, description, provider, price });
-
-    await newService.save();
-    res.status(201).json({ message: "Service added successfully", service: newService });
-
-  } catch (error) {
-    console.error("Error adding service:", error);
-    res.status(500).json({ error: "Failed to add service", details: error.message });
+    res.json(service);
+  } catch (err) {
+    console.error("Error fetching service:", err);
+    res.status(500).json({ message: err.message });
   }
 });
 

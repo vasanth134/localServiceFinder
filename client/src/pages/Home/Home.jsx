@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, AppBar, Toolbar, Typography, Grid, Card, CardContent, Container } from "@mui/material";
-import zIndex from "@mui/material/styles/zIndex";
+import { Button, AppBar, Toolbar, Typography, Grid, Card, CardContent, Container, Box } from "@mui/material";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -22,16 +21,36 @@ const HomePage = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Hero Section */}
-      <div style={{
+      {/* Hero Section with Animated Lines */}
+      <Box sx={{
         textAlign: "center",
-        padding: "100px 20px ",
+        padding: "100px 20px",
         backgroundColor: "#f5f5f5",
         minHeight: "50vh",
-        position:"relative",
-        top:"180px",
-        zIndex:-10
+        position: "relative",
+        top: "180px",
+        overflow: "hidden"
       }}>
+        {/* Animated Lines */}
+        {[...Array(3)].map((_, i) => (
+          <Box key={i} sx={{
+            position: "absolute",
+            // zIndex:0,
+            top: 0,
+            left: `${i * 40}%`,
+            top: `${i * 35}%`,
+            width: "100%",
+            height: "1px",
+            backgroundColor: "rgb(0, 0, 0)",
+            animation: "moveLines 2s infinite ease-in-out",
+            '@keyframes moveLines': {
+              "0%": { transform: "translateY(100%)" },
+              "50%": {transform:"translateX(-200px)"},
+              "100%": { transform: "translateY(100%)" }
+            }
+          }} />
+        ))}
+
         <Typography variant="h3" sx={{ fontWeight: "bold", color: "#333" }}>
           Find Trusted Local Services Easily
         </Typography>
@@ -46,10 +65,10 @@ const HomePage = () => {
         >
           Explore Services
         </Button>
-      </div>
-
-      {/* Why Choose Us? */}
-      <Container sx={{ paddingY: 5 }}>
+      </Box>
+  
+        {/* Why Choose Us? */}
+        <Container sx={{ paddingY:0 , marginY:25 , height:"10vh"}}>
         <Typography variant="h4" sx={{ textAlign: "center", fontWeight: "bold", marginBottom: 4 }}>
           Why Choose Us?
         </Typography>
@@ -82,7 +101,7 @@ const HomePage = () => {
       </Container>
 
       {/* How It Works? */}
-      <Container sx={{ paddingY: 5, backgroundColor: "#f5f5f5", borderRadius: 2 }}>
+      <Container sx={{ paddingY: 0, backgroundColor: "#f5f5f5", borderRadius: 2 }}>
         <Typography variant="h4" sx={{ textAlign: "center", fontWeight: "bold", marginBottom: 4 }}>
           How It Works?
         </Typography>
