@@ -10,10 +10,10 @@ const BookingsPage = () => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/bookings/user/${userId}`);
+        const response = await axios.get("http://localhost:5000/api/bookings");
         setBookings(response.data);
-      } catch (err) {
-        console.error("Error fetching bookings:", err);
+      } catch (error) {
+        console.error("Error fetching bookings:", error.response ? error.response.data : error.message);
       } finally {
         setLoading(false);
       }
@@ -37,7 +37,6 @@ const BookingsPage = () => {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>Local Service Finder</Typography>
           <Button color="inherit" href="/">Home</Button>
           <Button color="inherit" href="/services">Services</Button>
-          <Button color="inherit" href="/providers">Providers</Button>
         </Toolbar>
       </AppBar>
 
@@ -47,9 +46,10 @@ const BookingsPage = () => {
           bookings.map((booking) => (
             <Card key={booking._id} sx={{ marginBottom: 2, padding: 2 }}>
               <CardContent>
-                <Typography variant="h6">Provider: {booking.provider.name}</Typography>
+                <Typography variant="h6">Service: {booking.serviceId?.name || "Unknown"}</Typography>
                 <Typography variant="body1">Date: {booking.date}</Typography>
                 <Typography variant="body1">Time: {booking.time}</Typography>
+                <Typography variant="body1">Status: {booking.status}</Typography>
               </CardContent>
             </Card>
           ))

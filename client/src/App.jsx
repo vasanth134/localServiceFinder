@@ -8,6 +8,7 @@ import ServiceCardPage from "./pages/Services/ServiceCardPage"
 // import ProvidersPage from "./pages/Services/ProvidersPage"
 // import ProviderDetailsPage from "./pages/Services/ProviderDetailsPage"
 import BookingsPage from "./pages/Services/BookingsPage"
+import Dashboard from "./pages/Dashboard/Dashboard"
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
    {/* <Route path="/providers" element={<ProvidersPage />} /> */}
    {/* <Route path="/providers/:id" element={<ProviderDetailsPage />} /> */}
    <Route path="/bookings" element={<BookingsPage />} />
+   <Route path="/dashboard" element={<Dashboard /> } />
 
 
     </Routes>
