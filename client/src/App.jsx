@@ -9,6 +9,8 @@ import ServiceCardPage from "./pages/Services/ServiceCardPage"
 // import ProviderDetailsPage from "./pages/Services/ProviderDetailsPage"
 import BookingsPage from "./pages/Services/BookingsPage"
 import Dashboard from "./pages/Dashboard/Dashboard"
+import AboutPage from "./pages/About/About"
+import ProfilePage from "./pages/Profile/Profile"
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
    {/* <Route path="/providers/:id" element={<ProviderDetailsPage />} /> */}
    <Route path="/bookings" element={<BookingsPage />} />
    <Route path="/dashboard" element={<Dashboard /> } />
+   <Route path="/about" element={<AboutPage />} />
+   <Route path="/profile" element={<ProfilePage /> } />
 
 
     </Routes>
